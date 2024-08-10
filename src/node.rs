@@ -49,14 +49,30 @@ impl Node {
         self.color = rng.gen_range(1..=3);  // Pick a new random color
 
         self.send_color()
-        // In a real distributed system, we would send this color to neighbors
-        // Here we simulate that neighbors will access this node's color directly
     }
 
-    pub fn send_color(&mut self) {
+    pub fn send_color(&self) {
         // here we would inform other nodes that we have updated our color.
         // Also in case of having some central component that would handle synchronization between nodes 
-        // here we would notify it that we are done with picking our color.
+        // Notify neighbors of the new color
+        for _neighbor in &self.neighbors {
+            // here we would invoke call to crate that manages sending data to other nodes
+            //let mut neighbor_borrowed = neighbor.borrow_mut();
+            //neighbor_borrowed.receive_color(self.id, self.color);
+        }
+    }
+
+    pub fn receive_color(&mut self, _sender_id: usize, _sender_color: usize) {
+        // Update color directly without nested mutable borrows
+        // This code will not be used, but demostrantes how we cound hypotetically react on receiving color
+        // in this implementation we could have issues with race conditions
+
+        // if let Some(neighbor) = self.neighbors.iter().find(|n| n.borrow().get_id() == sender_id) {
+        //     neighbor.borrow_mut().color = sender_color;
+        // }
+    
+        // // Now process neighbors after receiving color
+        // self.process_neighbors();
     }
 
     pub fn process_neighbors(&mut self) {
