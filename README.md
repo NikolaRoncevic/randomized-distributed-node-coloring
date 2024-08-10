@@ -3,6 +3,9 @@
 This project implements a randomized 3-coloring algorithm in Rust. 
 The algorithm ensures that no two adjacent nodes in a graph share the same color, following a distributed approach.
 
+More info on [Juho Hirvonen and Jukka Suomela:
+Distributed Algorithms 2020](https://jukkasuomela.fi/da2020/da2020-01.pdf) Section 1.5
+
 ## Getting Started
 
 ### Prerequisites
