@@ -1,6 +1,9 @@
 [package]
-name = "randomized-distributed-algorithm"
+name = "randomized_3_coloring"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+rand = "0.8"
+
+[dev-dependencies]
